@@ -1,0 +1,5 @@
+$x + 555$
+$\frac{a}{b}$
+$sin(x)$
+$5 + @ = x$
+$japosin$

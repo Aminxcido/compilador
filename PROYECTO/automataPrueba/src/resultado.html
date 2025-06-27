@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Reporte de Expresión Matemática</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+body { font-family: Arial; margin: 20px; background: #f9f9f9; color: #333; }
+.item { margin-bottom: 10px; font-size: 18px; }
+.label { font-weight: bold; color: #444; }
+.low { color: green; }
+.medium { color: orange; }
+.high { color: red; }
+</style>
+</head>
+<body>
+<h1>Reporte de Expresión Matemática</h1>
+<div class="item">
+<span class="label">Expresión LaTeX:</span>
+<div style="font-size:20px; margin-top:5px;">$ \sin(x)+ \cos(x) @</div>
+</div>
+<div class="item">
+<span class="label">¿Graficable?:</span> Sí
+</div>
+<div class="item">
+<span class="label">Dificultad:</span> 
+<span class="high">alta</span>
+</div>
+<h2>Gráfico de la función</h2>
+<canvas id="grafico" width="600" height="400"></canvas>
+<script>
+const ctx = document.getElementById('grafico').getContext('2d');
+function f(x) { return Math.sin(x)+ Math.cos(x); }
+const data = [];
+for (let x = -10; x <= 10; x += 0.1) { data.push({x: x, y: f(x)}); }
+new Chart(ctx, {
+    type: 'line',
+    data: { datasets: [{ label: 'f(x)', data: data, borderColor: 'blue', borderWidth: 2, fill: false }] },
+    options: { scales: { x: { type: 'linear', position: 'bottom' } } }
+});
+</script>
+</body>
+</html>

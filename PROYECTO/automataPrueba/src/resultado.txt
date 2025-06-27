@@ -1,0 +1,77 @@
+Expresión leída del archivo:
+$ \sin(x)+ \cos(x) @
+
+-> Estado actual: INICIO             Entrada: $            ? PESO
+-> Estado actual: PESO               Entrada: simbolo      ? SIMBOLO
+-> Estado actual: SIMBOLO            Entrada: funcion_valida ? CONTENIDO
+-> Estado actual: CONTENIDO          Entrada: simbolo      ? CONTENIDO
+-> Estado actual: CONTENIDO          Entrada: letra        ? CONTENIDO
+-> Estado actual: CONTENIDO          Entrada: simbolo      ? CONTENIDO
+-> Estado actual: CONTENIDO          Entrada: simbolo      ? CONTENIDO
+-> Estado actual: CONTENIDO          Entrada: simbolo      ? CONTENIDO
+-> Estado actual: CONTENIDO          Entrada: funcion_valida ? CONTENIDO
+-> Estado actual: CONTENIDO          Entrada: simbolo      ? CONTENIDO
+-> Estado actual: CONTENIDO          Entrada: letra        ? CONTENIDO
+-> Estado actual: CONTENIDO          Entrada: simbolo      ? CONTENIDO
+-> Estado actual: CONTENIDO          Entrada: simbolo      ? CONTENIDO
+-> Estado actual: CONTENIDO          Entrada: $final       ? FIN
+
+Tokens generados:
+ 0: $          DELIMITADOR_INICIAL
+ 1: \sin       FUNCION        
+ 2: (          SIMBOLO        
+ 3: x          IDENT          
+ 4: )          SIMBOLO        
+ 5: +          OPERADOR       
+ 6: \cos       FUNCION        
+ 7: (          SIMBOLO        
+ 8: x          IDENT          
+ 9: )          SIMBOLO        
+10: @          DELIMITADOR_FINAL
+
+Análisis sintáctico:
+Paso | Pila                                     | Entrada
+-----+------------------------------------------+------------------------------------------
+   1 | S                                        | $ \sin ( x ) + \cos ( x ) @             
+   2 | DELIMITADOR_INICIAL EXPRESION DELIMITADOR_FINAL | $ \sin ( x ) + \cos ( x ) @             
+   3 | EXPRESION DELIMITADOR_FINAL              | \sin ( x ) + \cos ( x ) @               
+   4 | ELEMENTO EXPRESION_PRIMA DELIMITADOR_FINAL | \sin ( x ) + \cos ( x ) @               
+   5 | FUNCION_SIMBOLO ( ARGUMENTOS ) EXPRESION_PRIMA DELIMITADOR_FINAL | \sin ( x ) + \cos ( x ) @               
+   6 | ( ARGUMENTOS ) EXPRESION_PRIMA DELIMITADOR_FINAL | ( x ) + \cos ( x ) @                    
+   7 | ARGUMENTOS ) EXPRESION_PRIMA DELIMITADOR_FINAL | x ) + \cos ( x ) @                      
+   8 | EXPRESION ARGUMENTOS_PRIMA ) EXPRESION_PRIMA DELIMITADOR_FINAL | x ) + \cos ( x ) @                      
+   9 | ELEMENTO EXPRESION_PRIMA ARGUMENTOS_PRIMA ) EXPRESION_PRIMA DELIMITADOR_FINAL | x ) + \cos ( x ) @                      
+  10 | IDENT EXPRESION_PRIMA ARGUMENTOS_PRIMA ) EXPRESION_PRIMA DELIMITADOR_FINAL | x ) + \cos ( x ) @                      
+  11 | EXPRESION_PRIMA ARGUMENTOS_PRIMA ) EXPRESION_PRIMA DELIMITADOR_FINAL | ) + \cos ( x ) @                        
+Aplicar ? (vacío)
+  12 | ARGUMENTOS_PRIMA ) EXPRESION_PRIMA DELIMITADOR_FINAL | ) + \cos ( x ) @                        
+Aplicar ? (vacío)
+  13 | ) EXPRESION_PRIMA DELIMITADOR_FINAL      | ) + \cos ( x ) @                        
+  14 | EXPRESION_PRIMA DELIMITADOR_FINAL        | + \cos ( x ) @                          
+  15 | OPERADOR ELEMENTO EXPRESION_PRIMA DELIMITADOR_FINAL | + \cos ( x ) @                          
+  16 | ELEMENTO EXPRESION_PRIMA DELIMITADOR_FINAL | \cos ( x ) @                            
+  17 | FUNCION_SIMBOLO ( ARGUMENTOS ) EXPRESION_PRIMA DELIMITADOR_FINAL | \cos ( x ) @                            
+  18 | ( ARGUMENTOS ) EXPRESION_PRIMA DELIMITADOR_FINAL | ( x ) @                                 
+  19 | ARGUMENTOS ) EXPRESION_PRIMA DELIMITADOR_FINAL | x ) @                                   
+  20 | EXPRESION ARGUMENTOS_PRIMA ) EXPRESION_PRIMA DELIMITADOR_FINAL | x ) @                                   
+  21 | ELEMENTO EXPRESION_PRIMA ARGUMENTOS_PRIMA ) EXPRESION_PRIMA DELIMITADOR_FINAL | x ) @                                   
+  22 | IDENT EXPRESION_PRIMA ARGUMENTOS_PRIMA ) EXPRESION_PRIMA DELIMITADOR_FINAL | x ) @                                   
+  23 | EXPRESION_PRIMA ARGUMENTOS_PRIMA ) EXPRESION_PRIMA DELIMITADOR_FINAL | ) @                                     
+Aplicar ? (vacío)
+  24 | ARGUMENTOS_PRIMA ) EXPRESION_PRIMA DELIMITADOR_FINAL | ) @                                     
+Aplicar ? (vacío)
+  25 | ) EXPRESION_PRIMA DELIMITADOR_FINAL      | ) @                                     
+  26 | EXPRESION_PRIMA DELIMITADOR_FINAL        | @                                       
+Aplicar ? (vacío)
+  27 | DELIMITADOR_FINAL                        | @                                       
+Cadena aceptada.
+
+Análisis semántico:
+
+ANÁLISIS SEMÁNTICO:
+? No se encontraron errores semánticos.
+
+--- Tabla General de Errores ---
+? No se encontraron errores.
+
+Análisis completado.

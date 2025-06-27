@@ -1,0 +1,28 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: org.xtext.example.arithmetic
+Bundle-ManifestVersion: 2
+Bundle-Name: org.xtext.example.arithmetic
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.xtext.example.arithmetic; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.19.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.38.0",
+ org.eclipse.emf.common,
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+Bundle-RequiredExecutionEnvironment: JavaSE-21
+Export-Package: org.xtext.example.arithmetic.arithmetic.impl,
+ org.xtext.example.arithmetic.parser.antlr.internal,
+ org.xtext.example.arithmetic.validation,
+ org.xtext.example.arithmetic.scoping,
+ org.xtext.example.arithmetic.serializer,
+ org.xtext.example.arithmetic.arithmetic,
+ org.xtext.example.arithmetic.arithmetic.util,
+ org.xtext.example.arithmetic,
+ org.xtext.example.arithmetic.services,
+ org.xtext.example.arithmetic.parser.antlr,
+ org.xtext.example.arithmetic.generator
+Import-Package: org.apache.log4j

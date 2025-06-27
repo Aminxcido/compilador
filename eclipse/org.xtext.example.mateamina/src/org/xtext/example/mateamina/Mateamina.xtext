@@ -1,0 +1,45 @@
+grammar org.xtext.example.mathlang.MathLang with org.eclipse.xtext.common.Terminals
+
+generate mathLang "http://www.xtext.org/example/mathlang/MathLang"
+
+Model:
+    expressions+=DelimitedExpr*;
+
+DelimitedExpr:
+    '$' expr=Expression '@';
+
+Expression returns Expression:
+    SimpleExpression | Assignment;
+
+Assignment returns Expression:
+    {Assignment}
+    left=Variable '=' right=Expression;
+
+SimpleExpression returns Expression:
+    AddSub;
+
+AddSub returns Expression:
+    MulDiv (({Plus.left=current} '+' | {Minus.left=current} '-') right=MulDiv)*;
+
+MulDiv returns Expression:
+    Pow (({Mul.left=current} '*' | {Div.left=current} '/') right=Pow)*;
+
+Pow returns Expression:
+    Unary ({Pow.base=current} '^' exponent=Pow)?;
+
+Unary returns Expression:
+    ({Negative} '-' operand=Unary) | Primary;
+
+Primary returns Expression:
+    FunctionCall | Variable | NumberLiteral | '(' Expression ')';
+
+FunctionCall returns Expression:
+    {FunctionCall}
+    func=('sin' | 'cos' | 'tan' | 'sqrt' | 'log' | 'ln' | 'frac') 
+    '(' (args+=Expression (',' args+=Expression)*)? ')';
+
+Variable returns Expression:
+    {Variable} name=ID;
+
+NumberLiteral returns Expression:
+    {NumberLiteral} value=INT;

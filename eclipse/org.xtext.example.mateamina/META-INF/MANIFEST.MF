@@ -1,0 +1,28 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: org.xtext.example.mateamina
+Bundle-ManifestVersion: 2
+Bundle-Name: org.xtext.example.mateamina
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.xtext.example.mateamina; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.19.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.38.0",
+ org.eclipse.emf.common,
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+Bundle-RequiredExecutionEnvironment: JavaSE-21
+Export-Package: org.xtext.example.mathlang.scoping,
+ org.xtext.example.mathlang.parser.antlr.internal,
+ org.xtext.example.mathlang.services,
+ org.xtext.example.mathlang,
+ org.xtext.example.mathlang.mathLang,
+ org.xtext.example.mathlang.mathLang.impl,
+ org.xtext.example.mathlang.serializer,
+ org.xtext.example.mathlang.parser.antlr,
+ org.xtext.example.mathlang.generator,
+ org.xtext.example.mathlang.mathLang.util,
+ org.xtext.example.mathlang.validation
+Import-Package: org.apache.log4j
